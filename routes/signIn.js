@@ -1,18 +1,8 @@
-var express = require('express')
-var router = express.Router()
-
+const express = require('express')
+const router = express.Router()
+const kittySchema = require('../Schema/loginSchema')
+const db = require('../Database/connect')
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/test')
-
-const db = mongoose.connection
-db.on('error', console.error.bind(console, 'connection error:'))
-db.once('open', function () {
-  console.log('were connected!')
-})
-
-const kittySchema = mongoose.Schema({
-  name: String
-})
 
 kittySchema.methods.speak = function () {
   const greeting = this.name
@@ -20,12 +10,12 @@ kittySchema.methods.speak = function () {
     : 'I don\'t have a name'
   console.log(greeting)
 }
-var Kitten = mongoose.model('Kitten', kittySchema)
+const Kitten = mongoose.model('Kitten', kittySchema)
 
 const silence = new Kitten({ name: 'Silence' })
 console.log(silence.name) // 'Silence'
 
-var fluffy = new Kitten({ name: 'fluffy' })
+const fluffy = new Kitten({ name: 'fluffy' })
 fluffy.speak()
 
 fluffy.save(function (err, fluffy) {
