@@ -1,5 +1,4 @@
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/incode')
+const mongoose = require('../database/connect')
 const UserSchema = require('../schemas/UserSchema')
 
 const UserModel = mongoose.model('User', UserSchema)
