@@ -7,16 +7,12 @@ mongoose.connect('mongodb://localhost/incode')
 const db = require('../database/connect')
 const User = require('../models/UserModel')
 
-router.post('/', async (requst, response) => {
+router.post('/', async (request, response) => {
+  const user = await User.find({ email: request.body.email })
 
-  const user = new User({
-    email: requst.body.email,
-    password: requst.body.password,
-  })
-
-  const savedUser = await user.save()
-
-  response.json({ user: savedUser })
+  if (!user.length) {
+    response.status(401).json({ massages: 'Такой пользователь уже зарегистрирован!' })
+  }
 })
 
 module.exports = router
