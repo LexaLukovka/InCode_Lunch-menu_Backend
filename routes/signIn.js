@@ -1,50 +1,22 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/test')
+mongoose.connect('mongodb://localhost/incode')
 
-const db = mongoose.connection
-db.on('error', console.error.bind(console, 'connection error:'))
-db.once('open', function () {
-  console.log('were connected!')
-})
+const db = require('../database/connect')
+const User = require('../models/UserModel')
 
-const kittySchema = mongoose.Schema({
-  name: String
-})
+router.post('/', async (requst, response) => {
 
-kittySchema.methods.speak = function () {
-  const greeting = this.name
-    ? 'Meow name is ' + this.name
-    : 'I don\'t have a name'
-  console.log(greeting)
-}
-var Kitten = mongoose.model('Kitten', kittySchema)
+  const user = new User({
+    email: requst.body.email,
+    password: requst.body.password,
+  })
 
-const silence = new Kitten({ name: 'Silence' })
-console.log(silence.name) // 'Silence'
+  const savedUser = await user.save()
 
-var fluffy = new Kitten({ name: 'fluffy' })
-fluffy.speak()
-
-fluffy.save(function (err, fluffy) {
-  if (err) return console.error(err)
-  fluffy.speak()
-})
-
-Kitten.find(function (err, kittens) {
-  if (err) return console.error(err)
-  console.log(kittens)
-})
-
-Kitten.find({ name: /^fluff/ }, Kitten.find())
-
-router.post('/', function (req, res) {
-  console.log('Got a POST request')
-  console.log('Req', req)
-  console.log('Body', req.body)
-  res.send('aa')
+  response.json({ user: savedUser })
 })
 
 module.exports = router
