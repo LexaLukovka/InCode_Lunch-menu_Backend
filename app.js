@@ -7,6 +7,7 @@ const cors = require('cors')
 
 const authRouter = require('./routes/auth')
 const dishRouter = require('./routes/dishes')
+const menuRouter = require('./routes/menu')
 
 const app = express()
 app.set('view engine', 'jade');
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', authRouter)
 app.use('/', dishRouter)
+app.use('/', menuRouter)
 
 
 // catch 404 and forward to error handler
@@ -29,7 +31,7 @@ app.use((req, res, next) => {
 })
 
 // error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
