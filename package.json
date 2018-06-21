@@ -1,20 +1,28 @@
 {
-  "name": "react-backend",
+  "name": "dischesBackend",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
     "inspect": "nodemon --inspect ./bin/www"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "http-errors": "~1.6.2",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.16.1",
+    "cookie-parser": "~1.4.3",
+    "express-session": "^1.15.2",
     "indicative": "^5.0.5",
     "jade": "~1.11.0",
+    "jsonwebtoken": "^7.3.0",
     "mongoose": "^5.1.5",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
+    "serve-favicon": "~2.3.2"
   }
 }
