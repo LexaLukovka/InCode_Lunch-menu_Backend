@@ -4,7 +4,9 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const cors = require('cors')
+
 const authRouter = require('./routes/auth')
+const dishRouter = require('./routes/dishes')
 
 const app = express()
 app.set('view engine', 'jade');
@@ -18,6 +20,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', authRouter)
+app.use('/', dishRouter)
 
 
 // catch 404 and forward to error handler

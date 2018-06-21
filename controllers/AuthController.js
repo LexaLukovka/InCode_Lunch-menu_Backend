@@ -37,7 +37,6 @@ class AuthController {
   async register(request, response) {
 
     const users = await User.find({ email: request.body.email })
-    console.log(users)
 
     if (users.length) {
       return response.status(401).json([{
