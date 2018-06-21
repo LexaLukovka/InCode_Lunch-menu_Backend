@@ -48,11 +48,19 @@ class AuthController {
     const user = await new User({
       email: request.body.email,
       password: request.body.password,
+      balance: 0,
     })
 
     user.save()
 
     return response.json({ user: [user] })
+  }
+
+  async show(request, response) {
+
+    const users = await User.find({})
+    console.log(users)
+    return response.json({ users: [users] })
   }
 
 }

@@ -34,3 +34,4 @@ module.exports = new MenuController()
 //   }
 // )
 // console.log(menu)
+// menu.save()
