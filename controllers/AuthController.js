@@ -5,17 +5,27 @@ const RegisterValidator = require('../validators/RegisterValidator')
 class AuthController {
   async login(request, response) {
 
-    const user = await User.find({
+    const userEmail = await User.find({
       email: request.body.email,
-      password: request.body.password
     })
-
-    if (!user.length) {
+    if (!userEmail.length) {
       return response
         .status(401)
         .json([{
           field: 'email',
           message: LoginValidator.messages['email.exists']
+        }])
+    }
+    const user = await User.find({
+      email: request.body.email,
+      password: request.body.password
+    })
+    if (!user.length) {
+      return response
+        .status(401)
+        .json([{
+          field: 'password',
+          message: LoginValidator.messages['password.exists']
         }])
     }
 
@@ -25,6 +35,7 @@ class AuthController {
   async register(request, response) {
 
     const users = await User.find({ email: request.body.email })
+    console.log(users)
 
     if (users.length) {
       return response.status(401).json([{
