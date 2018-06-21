@@ -16,10 +16,12 @@ class AuthController {
           message: LoginValidator.messages['email.exists']
         }])
     }
+
     const user = await User.find({
       email: request.body.email,
       password: request.body.password
     })
+
     if (!user.length) {
       return response
         .status(401)
@@ -44,14 +46,14 @@ class AuthController {
       }])
     }
 
-    const user = new User({
+    const user = await new User({
       email: request.body.email,
       password: request.body.password,
     })
 
-    const savedUser = user.save()
+    user.save()
 
-    return response.json({ user: savedUser })
+    return response.json({ user: [user] })
   }
 
 }
