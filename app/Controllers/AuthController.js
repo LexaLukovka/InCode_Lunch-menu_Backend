@@ -18,12 +18,13 @@ class AuthController {
   }
 
   async register(request, response) {
+    console.log(request.body)
     const [err, data] = await validate(request.body, RegisterValidator)
     if (err) return response.status(401).json(err)
 
     const newUser = new User({
-      email: request.body.email,
-      password: request.body.password
+      email: data.email,
+      password: data.password
     })
 
     const user = await newUser.save()

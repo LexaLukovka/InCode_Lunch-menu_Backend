@@ -8,6 +8,8 @@ const morgan = require('morgan')
 const passport = require('passport')
 
 const authRoutes = require('./routes/auth')
+const menuRoutes = require('./routes/menu')
+const orderRoutes = require('./routes/order')
 
 const app = express()
 
@@ -30,6 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(morgan('dev'))
 app.use(passport.initialize())
 
+app.use('/', menuRoutes)
+app.use('/', orderRoutes)
 app.use('/', authRoutes)
 
 // catch 404 and forward to error handler
