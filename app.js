@@ -10,6 +10,8 @@ const passport = require('passport')
 const authRoutes = require('./routes/auth')
 const menuRoutes = require('./routes/menu')
 const orderRoutes = require('./routes/order')
+const usersRoutes = require('./routes/users')
+const balanceRoutes = require('./routes/balance')
 
 const app = express()
 
@@ -33,12 +35,14 @@ app.use(morgan('dev'))
 app.use(passport.initialize())
 
 app.use('/', menuRoutes)
+app.use('/', usersRoutes)
 app.use('/', orderRoutes)
+app.use('/', balanceRoutes)
 app.use('/', authRoutes)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  var err = new Error('Not Found')
+  const err = new Error('Not Found')
   err.status = 404
   next(err)
 })

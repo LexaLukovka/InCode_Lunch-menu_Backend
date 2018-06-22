@@ -24,7 +24,8 @@ class AuthController {
 
     const newUser = new User({
       email: data.email,
-      password: data.password
+      password: data.password,
+      balance: 0,
     })
 
     const user = await newUser.save()
