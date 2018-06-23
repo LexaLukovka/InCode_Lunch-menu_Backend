@@ -1,4 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
+/yarn.lock
 /node_modules
 /.idea
-/yarn.lock

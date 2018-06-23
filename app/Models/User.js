@@ -14,7 +14,7 @@ const UserSchema = new Schema({
   },
   balance: {
     type: Number,
-    required: true
+    required: true,
   }
 })
 

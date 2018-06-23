@@ -39,6 +39,7 @@ const matchesEmailFn = async (data, field, message, args, get) => {
     if (!isMatch && err) throw message
   })
 }
+
 const emailExistsFn = async (data, field, message, args, get) => {
   const value = get(data, field)
   if (!value) return

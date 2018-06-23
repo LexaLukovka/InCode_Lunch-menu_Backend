@@ -8,4 +8,6 @@ router.post('/signUp', AuthController.register)
 
 router.post('/signIn', AuthController.login)
 
+// router.post('/verifyEmail', AuthController.verifyEmail)
+
 module.exports = router
