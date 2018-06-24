@@ -3,27 +3,111 @@ const Menu = require('../Models/Menu')
 class MenuController {
   async index(request, response) {
     const menu = await Menu.find({})
-    return response.json({ menu: [menu] })
+    return response.json({ menu })
   }
 
   async addMenu(request, response) {
-    const menu = await  new Menu({
+    const menu = await new Menu({
         menu: [
           {
-            image: request.body[0].dishesSelect[0].src,
-            description: request.body[0].dishesSelect[0].description,
+            id: 0,
+            menu: [
+              {
+                idDishes: 0,
+                image: 'http://www.tomato-pizza.ru/image/uploaded/1425984970291181.jpg',
+                description: 'Пицца',
+              },
+              {
+                idDishes: 1,
+                image: 'http://www.menslife.com/upload/iblock/4be/piknik_po_korolevski_kak_prigotovit_idealnyy_shashlyk.jpg',
+                description: 'Шашлык',
+              },
+              {
+                idDishes: 2,
+                image: 'https://gotovim-edim.ru/upload/resize_cache/recipes/1d0/655_454_1/shefburger4.jpg',
+                description: 'Бургер',
+              },
+              {
+                idDishes: 3,
+                image: 'http://delovkusa.dp.ua/wp-content/uploads/2015/07/borsh.jpg',
+                description: 'Борщ',
+              },
+            ]
           },
           {
-            image: request.body[1].dishesSelect[1].src,
-            description: request.body[1].dishesSelect[1].description,
+            id: 1,
+            menu: [
+              {
+                idDishes: 0,
+                image: 'http://www.menslife.com/upload/iblock/4be/piknik_po_korolevski_kak_prigotovit_idealnyy_shashlyk.jpg',
+                description: 'Шашлык',
+              },
+              {
+                idDishes: 1,
+                image: 'http://www.tomato-pizza.ru/image/uploaded/1425984970291181.jpg',
+                description: 'Пицца',
+              },
+              {
+                idDishes: 2,
+                image: 'http://delovkusa.dp.ua/wp-content/uploads/2015/07/borsh.jpg',
+                description: 'Борщ',
+              },
+              {
+                idDishes: 3,
+                image: 'https://gotovim-edim.ru/upload/resize_cache/recipes/1d0/655_454_1/shefburger4.jpg',
+                description: 'Бургер',
+              },
+            ]
           },
           {
-            image: request.body[2].dishesSelect[2].src,
-            description: request.body[2].dishesSelect[2].description,
+            id: 2,
+            menu: [
+              {
+                idDishes: 0,
+                image: 'https://gotovim-edim.ru/upload/resize_cache/recipes/1d0/655_454_1/shefburger4.jpg',
+                description: 'Бургер',
+              },
+              {
+                idDishes: 1,
+                image: 'http://delovkusa.dp.ua/wp-content/uploads/2015/07/borsh.jpg',
+                description: 'Борщ',
+              },
+              {
+                idDishes: 2,
+                image: 'http://www.tomato-pizza.ru/image/uploaded/1425984970291181.jpg',
+                description: 'Пицца',
+              },
+              {
+                idDishes: 3,
+                image: 'http://www.menslife.com/upload/iblock/4be/piknik_po_korolevski_kak_prigotovit_idealnyy_shashlyk.jpg',
+                description: 'Шашлык',
+              },
+            ]
           },
           {
-            image: request.body[3].dishesSelect[3].src,
-            description: request.body[3].dishesSelect[3].description,
+            id: 3,
+            menu: [
+              {
+                idDishes: 0,
+                image: 'http://delovkusa.dp.ua/wp-content/uploads/2015/07/borsh.jpg',
+                description: 'Борщ',
+              },
+              {
+                idDishes: 1,
+                image: 'http://www.menslife.com/upload/iblock/4be/piknik_po_korolevski_kak_prigotovit_idealnyy_shashlyk.jpg',
+                description: 'Шашлык',
+              },
+              {
+                idDishes: 2,
+                image: 'https://gotovim-edim.ru/upload/resize_cache/recipes/1d0/655_454_1/shefburger4.jpg',
+                description: 'Бургер',
+              },
+              {
+                idDishes: 3,
+                image: 'http://www.tomato-pizza.ru/image/uploaded/1425984970291181.jpg',
+                description: 'Пицца',
+              },
+            ]
           },
         ]
       }

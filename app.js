@@ -13,6 +13,7 @@ const orderRoutes = require('./routes/order')
 const usersRoutes = require('./routes/users')
 const balanceRoutes = require('./routes/balance')
 const selectControlRoutes = require('./routes/selectControl')
+const selectedRoutes = require('./routes/selected')
 
 const app = express()
 
@@ -41,6 +42,7 @@ app.use('/', usersRoutes)
 app.use('/', orderRoutes)
 app.use('/', balanceRoutes)
 app.use('/', selectControlRoutes)
+app.use('/', selectedRoutes)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
