@@ -1,5 +1,4 @@
 module.exports = class LoginUser {
-  // noinspection JSUnusedGlobalSymbols
   get rules() {
     return {
       email: 'required|email|email_exists',

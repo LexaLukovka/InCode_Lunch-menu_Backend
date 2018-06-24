@@ -11,17 +11,17 @@ const MenuSchema = new Schema({
         description: String,
       },
       {
-        idDishes: Number,
+        dishes_id: Number,
         image: String,
         description: String,
       },
       {
-        idDishes: Number,
+        dishes_id: Number,
         image: String,
         description: String,
       },
       {
-        idDishes: Number,
+        dishes_id: Number,
         image: String,
         description: String,
       },
