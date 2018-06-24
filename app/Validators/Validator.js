@@ -35,7 +35,7 @@ const matchesEmailFn = async (data, field, message, args, get) => {
   const user = await User.findOne({ email: data.email })
   if (!user) throw message
 
-  user.comparePassword(data.password, function (err, isMatch) {
+  user.comparePassword(data.password, message, function (err, isMatch) {
     if (!isMatch && err) throw message
   })
 }
@@ -45,9 +45,6 @@ const emailExistsFn = async (data, field, message, args, get) => {
   if (!value) return
   const user = await User.findOne({ email: data.email })
   if (!user) throw message
-  user.comparePassword(data.password, function (err, isMatch) {
-    if (!isMatch && err) throw message
-  })
 }
 
 validator.extend('uniqueEmail', uniqueEmailFn)

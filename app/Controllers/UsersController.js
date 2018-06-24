@@ -14,7 +14,6 @@ class UsersController {
     user.push(users.map(value =>
       createData(value.email, value.balance),
     ))
-    // console.log(user)
     return response.json({ user })
   }
 }

@@ -3,21 +3,21 @@ const db = require('../../database/connect')
 const Schema = mongoose.Schema
 
 const OrderSchema = new Schema({
-  id: {
-    type: Number,
-    required: true
+  email: {
+    type: String,
+    required: true,
   },
   date: {
     type: String,
-    required: true
+    required: true,
   },
   number: {
     type: Number,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
 })
 
