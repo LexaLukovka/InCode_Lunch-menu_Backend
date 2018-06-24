@@ -7,7 +7,6 @@ class MenuController {
   }
 
   async addMenu(request, response) {
-
     const menu = await  new Menu({
         menu: [
           {
@@ -29,11 +28,9 @@ class MenuController {
         ]
       }
     )
-
-    console.log(menu)
     menu.save()
-
   }
+
 }
 
 module.exports = new MenuController()

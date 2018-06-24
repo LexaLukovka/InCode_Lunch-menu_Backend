@@ -12,6 +12,7 @@ const menuRoutes = require('./routes/menu')
 const orderRoutes = require('./routes/order')
 const usersRoutes = require('./routes/users')
 const balanceRoutes = require('./routes/balance')
+const selectControlRoutes = require('./routes/selectControl')
 
 const app = express()
 
@@ -34,11 +35,12 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(morgan('dev'))
 app.use(passport.initialize())
 
+app.use('/', authRoutes)
 app.use('/', menuRoutes)
 app.use('/', usersRoutes)
 app.use('/', orderRoutes)
 app.use('/', balanceRoutes)
-app.use('/', authRoutes)
+app.use('/', selectControlRoutes)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
