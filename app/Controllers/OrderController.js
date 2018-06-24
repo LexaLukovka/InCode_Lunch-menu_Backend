@@ -44,7 +44,6 @@ class OrderController {
     })
     const counterOrders = []
     counterOrders.push(ordersOne.length, ordersTwo.length, ordersThree.length, ordersFour.length)
-    console.log(counterOrders)
 
     response.json({ counterOrders })
   }

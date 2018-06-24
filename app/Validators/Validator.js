@@ -36,7 +36,7 @@ const matchesEmailFn = async (data, field, message, args, get) => {
   if (!user) throw message
 
   user.comparePassword(data.password, message, function (err, isMatch) {
-    if (!isMatch && err) throw message
+    if (!isMatch && err) return message
   })
 }
 
