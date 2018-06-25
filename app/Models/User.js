@@ -42,20 +42,20 @@ UserSchema.pre('save', function (next) {
   }
 })
 
-UserSchema.methods.comparePassword = (password) => {
+UserSchema.methods.comparePassword = function (password) {
   const currentPassword = this.password
-  return new Promise((resolve, reject) => {
-    bcrypt.compare(password, currentPassword, (err, isMatch) => {
+  return new Promise(function (resolve, reject) {
+    bcrypt.compare(password, currentPassword, function (err, isMatch) {
       resolve(isMatch)
       if (err) reject(err)
     })
   })
 }
 
-UserSchema.methods.compareVerifyHash = (password) => {
+UserSchema.methods.compareVerifyHash = function (password) {
   const currentPassword = this.password
-  return new Promise((resolve, reject) => {
-    bcrypt.compare(password, currentPassword, (err, isMatch) => {
+  return new Promise(function (resolve, reject) {
+    bcrypt.compare(password, currentPassword, function (err, isMatch) {
       resolve(isMatch)
       if (err) reject(err)
     })

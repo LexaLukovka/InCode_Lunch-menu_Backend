@@ -22,14 +22,14 @@ const validator = {
   }
 }
 
-const uniqueEmailFn = async (data, field, message, args, get) => {
+const uniqueEmailFn = async function (data, field, message, args, get) {
   const value = get(data, field)
   if (!value) return
   const user = await User.findOne({ email: value })
   if (user) throw message
 }
 
-const matchesEmailFn = async (data, field, message, args, get) => {
+const matchesEmailFn = async function (data, field, message, args, get) {
   const value = get(data, field)
   if (!value) return
   const user = await User.findOne({ email: data.email })
@@ -39,7 +39,7 @@ const matchesEmailFn = async (data, field, message, args, get) => {
   if (!isMatch || err) throw message
 }
 
-const matchesVerifyEmailFn = async (data, field, message, args, get) => {
+const matchesVerifyEmailFn = async function (data, field, message, args, get) {
   const value = get(data, field)
   if (!value) return
   const user = await User.findOne({ email: data.email })
@@ -49,7 +49,7 @@ const matchesVerifyEmailFn = async (data, field, message, args, get) => {
   if (!isMatch && err) throw message
 }
 
-const emailExistsFn = async (data, field, message, args, get) => {
+const emailExistsFn = async function (data, field, message, args, get) {
   const value = get(data, field)
   if (!value) return
   const user = await User.findOne({ email: data.email })
