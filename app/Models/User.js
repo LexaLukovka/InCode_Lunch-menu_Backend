@@ -19,7 +19,11 @@ const UserSchema = new Schema({
   authorization: {
     type: Boolean,
     required: true,
-  }
+  },
+  role: {
+    type: String,
+    required: true,
+  },
 })
 
 UserSchema.pre('save', function (next) {
@@ -38,20 +42,20 @@ UserSchema.pre('save', function (next) {
   }
 })
 
-UserSchema.methods.comparePassword = function (password) {
+UserSchema.methods.comparePassword = (password) => {
   const currentPassword = this.password
   return new Promise((resolve, reject) => {
-    bcrypt.compare(password, currentPassword, function (err, isMatch) {
+    bcrypt.compare(password, currentPassword, (err, isMatch) => {
       resolve(isMatch)
       if (err) reject(err)
     })
   })
 }
 
-UserSchema.methods.compareVerifyHash = function (password) {
+UserSchema.methods.compareVerifyHash = (password) => {
   const currentPassword = this.password
   return new Promise((resolve, reject) => {
-    bcrypt.compare(password, currentPassword, function (err, isMatch) {
+    bcrypt.compare(password, currentPassword, (err, isMatch) => {
       resolve(isMatch)
       if (err) reject(err)
     })

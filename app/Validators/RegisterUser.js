@@ -1,5 +1,4 @@
 module.exports = class RegisterUser {
-  // noinspection JSUnusedGlobalSymbols
   get rules() {
     return {
       email: 'required|email|unique_email',

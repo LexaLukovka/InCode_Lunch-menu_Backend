@@ -5,9 +5,6 @@ const router = express.Router()
 const AuthController = require('../app/Controllers/AuthController')
 
 router.post('/signUp', AuthController.register)
-
 router.post('/signIn', AuthController.login)
-
-// router.post('/verifyEmail', AuthController.verifyEmail)
 
 module.exports = router

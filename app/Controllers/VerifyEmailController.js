@@ -14,7 +14,6 @@ class VerifyEmailController {
     )
     const user = await User.findOne({ email: data.email })
     const token = jwt.sign(user, config.secret)
-    console.log(token)
     return response.json({ token: 'JWT ' + token })
   }
 

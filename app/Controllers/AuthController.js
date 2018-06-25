@@ -19,11 +19,14 @@ class AuthController {
     const [err, data] = await validate(request.body, RegisterValidator)
     if (err) return response.status(401).json(err)
 
+    const users = await User.find({})
+
     const newUser = new User({
       email: data.email,
       password: data.password,
       balance: 0,
       authorization: false,
+      role: users.length !== 0 ? 'user' : 'admin',
     })
 
     const user = await newUser.save()
