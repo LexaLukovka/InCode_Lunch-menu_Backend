@@ -1,13 +1,13 @@
 module.exports = class VerifyValidator {
   get rules() {
     return {
-      email: 'required|email',
+      email: 'email|matches_verify',
     }
   }
 
   get messages() {
     return {
-      'email.required': 'Введите email пожалуйста',
+      'email.matches_verify': 'Hash не совпадает',
       'email.email': 'Неправильный email',
     }
   }

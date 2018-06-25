@@ -3,13 +3,17 @@ const db = require('../../database/connect')
 const Schema = mongoose.Schema
 
 const DishSchema = new Schema({
-  dish: {
+  id: {
+    type: Number,
+    required: true,
+  },
+  description: {
     type: String,
-    required: true
+    required: true,
   },
   images: {
     type: String,
-    required: true
+    required: true,
   },
 })
 

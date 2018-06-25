@@ -9,6 +9,7 @@ const passport = require('passport')
 
 const authRoutes = require('./routes/auth')
 const menuRoutes = require('./routes/menu')
+const dishesRoutes = require('./routes/dishes')
 const orderRoutes = require('./routes/order')
 const usersRoutes = require('./routes/users')
 const balanceRoutes = require('./routes/balance')
@@ -39,6 +40,7 @@ app.use(passport.initialize())
 
 app.use('/', authRoutes)
 app.use('/', menuRoutes)
+app.use('/', dishesRoutes)
 app.use('/', usersRoutes)
 app.use('/', orderRoutes)
 app.use('/', balanceRoutes)
@@ -54,7 +56,7 @@ app.use(function (req, res, next) {
 })
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function (err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}

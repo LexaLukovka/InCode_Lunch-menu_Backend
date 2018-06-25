@@ -23,6 +23,7 @@ class AuthController {
       email: data.email,
       password: data.password,
       balance: 0,
+      authorization: false,
     })
 
     const user = await newUser.save()

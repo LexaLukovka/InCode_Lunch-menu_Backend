@@ -15,6 +15,10 @@ const UserSchema = new Schema({
   balance: {
     type: Number,
     required: true,
+  },
+  authorization: {
+    type: Boolean,
+    required: true,
   }
 })
 
@@ -44,7 +48,7 @@ UserSchema.methods.comparePassword = function (password) {
   })
 }
 
-UserSchema.methods.comparePassword = function (password) {
+UserSchema.methods.compareVerifyHash = function (password) {
   const currentPassword = this.password
   return new Promise((resolve, reject) => {
     bcrypt.compare(password, currentPassword, function (err, isMatch) {
@@ -53,6 +57,5 @@ UserSchema.methods.comparePassword = function (password) {
     })
   })
 }
-
 
 module.exports = mongoose.model('User', UserSchema)
